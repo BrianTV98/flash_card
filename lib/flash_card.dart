@@ -1,44 +1,7 @@
+library flash_card;
+
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        body: Center(
-          child: SizedBox(
-            height: 200,
-            width: 200,
-            child: FlashCard(
-              frontWidget: Container(
-                margin: EdgeInsets.all(20),
-                height: double.infinity,
-                width: double.infinity,
-                color: Colors.blue,
-              ),
-              backWidget: Container(
-                margin: EdgeInsets.all(20),
-                height: double.infinity,
-                width: double.infinity,
-                color: Colors.red,
-              ),
-            ),
-          ),
-        ),
-      )
-    );
-  }
-}
 
 class FlashCard extends StatefulWidget {
   final Widget frontWidget;
@@ -161,7 +124,7 @@ class AnimatedCard extends StatelessWidget {
       child: Card(
           elevation: 4,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20)
+              borderRadius: BorderRadius.circular(20)
           ),
           borderOnForeground: false,
           child: child
@@ -169,3 +132,4 @@ class AnimatedCard extends StatelessWidget {
     );
   }
 }
+
