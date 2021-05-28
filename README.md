@@ -3,16 +3,16 @@
 
 ## Getting Started
 
--Install package:
+- Install package:
 ```
     dependencies:
     flash_card:
         git:
-            url:https://github.com/tranhieudev/flash_card.git
+            url: https://github.com/tranhieudev/flash_card.git
 ```
 
 
--Example:
+- Example:
 ```
    FlashCard(
        frontWidget: Container(

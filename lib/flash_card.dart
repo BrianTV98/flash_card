@@ -4,17 +4,22 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class FlashCard extends StatefulWidget {
-  final Widget frontWidget;
+  final Container frontWidget;
 
-  final Widget backWidget;
+  final Container backWidget;
 
   final Duration duration;
+  final double height;
+  final double width;
 
   FlashCard({
+    Key key,
     @required this.frontWidget,
     @required this.backWidget,
-    this.duration = const Duration(milliseconds: 500)
-  });
+    this.duration = const Duration(milliseconds: 500),
+    this.height = 200,
+    this.width = 200
+  }):super(key: key);
 
   @override
   _FlashCardState createState() => _FlashCardState();
@@ -78,6 +83,8 @@ class _FlashCardState extends State<FlashCard>
           child: AnimatedCard(
             animation: animation,
             child: widget.backWidget,
+            height: widget.height,
+            width: widget.width,
           ),
         ),
         GestureDetector(
@@ -85,6 +92,8 @@ class _FlashCardState extends State<FlashCard>
           child: AnimatedCard(
             animation: _backRotation,
             child: widget.frontWidget,
+            height: widget.height,
+            width: widget.width,
           ),
         ),
       ],
@@ -105,10 +114,19 @@ class _FlashCardState extends State<FlashCard>
 class AnimatedCard extends StatelessWidget {
   final Widget child;
   final Animation<double> animation;
+  final double height;
+  final double width;
 
-  AnimatedCard({@required this.child, @required this.animation})
+  AnimatedCard({
+    @required this.child,
+    @required this.animation,
+    @required this.height,
+    @required this.width
+  })
       : assert(child != null),
-        assert(animation != null);
+        assert(animation != null),
+        assert(height!=null && height >10),
+        assert(width!=null && width >10);
 
   @override
   Widget build(BuildContext context) {
@@ -124,16 +142,20 @@ class AnimatedCard extends StatelessWidget {
           child: child,
         );
       },
-      child: Card(
-          elevation: 4,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20)
-          ),
-          borderOnForeground: false,
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: child,
-          )
+      child: SizedBox(
+        height: height,
+        width: width,
+        child: Card(
+            elevation: 4,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20)
+            ),
+            borderOnForeground: false,
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: child,
+            )
+        ),
       ),
     );
   }
