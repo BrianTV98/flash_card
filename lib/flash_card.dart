@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class FlashCard extends StatefulWidget {
-  final Container frontWidget;
+  final Widget frontWidget;
 
-  final Container backWidget;
+  final Widget backWidget;
 
   final Duration duration;
   final double height;
