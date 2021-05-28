@@ -8,9 +8,12 @@ class FlashCard extends StatefulWidget {
 
   final Widget backWidget;
 
+  final Duration duration;
+
   FlashCard({
     @required this.frontWidget,
-    @required this.backWidget
+    @required this.backWidget,
+    this.duration = const Duration(milliseconds: 500)
   });
 
   @override
@@ -29,7 +32,7 @@ class _FlashCardState extends State<FlashCard>
   void initState() {
     super.initState();
     _controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+        AnimationController(vsync: this, duration: widget.duration);
     animation = TweenSequence(
       <TweenSequenceItem<double>>[
         TweenSequenceItem<double>(
@@ -127,7 +130,10 @@ class AnimatedCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(20)
           ),
           borderOnForeground: false,
-          child: child
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: child,
+          )
       ),
     );
   }
