@@ -1,8 +1,8 @@
 name: flash_card
 description: A new Flutter package.
-version: 0.0.1
-author:
-homepage:
+version: 0.0.2
+author: ganui
+homepage: https://github.com/GaNuiGLPK/flash_card
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

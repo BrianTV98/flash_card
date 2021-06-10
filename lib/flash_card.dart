@@ -1,25 +1,35 @@
 library flash_card;
 
-import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+import 'package:flutter/material.dart';
+
+/// UI flash card, commonly found in language teaching to children
 class FlashCard extends StatefulWidget {
+  /// this is the front of the card
   final Widget frontWidget;
 
+  /// this is the back of the card
   final Widget backWidget;
 
+  /// flip time
   final Duration duration;
+
+  /// height of card
   final double height;
+
+  /// width of card
   final double width;
 
-  FlashCard({
-    Key key,
-    @required this.frontWidget,
-    @required this.backWidget,
-    this.duration = const Duration(milliseconds: 500),
-    this.height = 200,
-    this.width = 200
-  }):super(key: key);
+  /// constructor: Default height 200dp, width 200dp, duration  500 milliseconds
+  const FlashCard(
+      {Key key,
+      @required this.frontWidget,
+      @required this.backWidget,
+      this.duration = const Duration(milliseconds: 500),
+      this.height = 200,
+      this.width = 200})
+      : super(key: key);
 
   @override
   _FlashCardState createState() => _FlashCardState();
@@ -27,18 +37,23 @@ class FlashCard extends StatefulWidget {
 
 class _FlashCardState extends State<FlashCard>
     with SingleTickerProviderStateMixin {
+  /// controller flip animation
   AnimationController _controller;
-  Animation<double> animation;
-  Animation<double> _backRotation;
 
+  /// animation for flip from front to back
+  Animation<double> _frontAnimation;
+
+  ///animation for flip from back  to front
+  Animation<double> _backAnimation;
+
+  /// state of card is front or back
   bool isFrontVisible = true;
 
   @override
   void initState() {
     super.initState();
-    _controller =
-        AnimationController(vsync: this, duration: widget.duration);
-    animation = TweenSequence(
+    _controller = AnimationController(vsync: this, duration: widget.duration);
+    _frontAnimation = TweenSequence(
       <TweenSequenceItem<double>>[
         TweenSequenceItem<double>(
           tween: Tween(begin: 0.0, end: math.pi / 2)
@@ -52,20 +67,19 @@ class _FlashCardState extends State<FlashCard>
       ],
     ).animate(_controller);
 
-    _backRotation = TweenSequence(
+    _backAnimation = TweenSequence(
       <TweenSequenceItem<double>>[
         TweenSequenceItem<double>(
           tween: ConstantTween<double>(math.pi / 2),
           weight: 50.0,
         ),
         TweenSequenceItem<double>(
-          tween: Tween(begin: -math.pi / 2, end: 0.0).chain(CurveTween(curve: Curves.linear)),
+          tween: Tween(begin: -math.pi / 2, end: 0.0)
+              .chain(CurveTween(curve: Curves.linear)),
           weight: 50.0,
         ),
       ],
     ).animate(_controller);
-
-
   }
 
   @override
@@ -81,7 +95,7 @@ class _FlashCardState extends State<FlashCard>
         GestureDetector(
           onTap: _toggleSide,
           child: AnimatedCard(
-            animation: animation,
+            animation: _frontAnimation,
             child: widget.backWidget,
             height: widget.height,
             width: widget.width,
@@ -90,7 +104,7 @@ class _FlashCardState extends State<FlashCard>
         GestureDetector(
           onTap: _toggleSide,
           child: AnimatedCard(
-            animation: _backRotation,
+            animation: _backAnimation,
             child: widget.frontWidget,
             height: widget.height,
             width: widget.width,
@@ -100,6 +114,7 @@ class _FlashCardState extends State<FlashCard>
     );
   }
 
+  /// when user onTap, It will run function
   void _toggleSide() {
     if (isFrontVisible) {
       _controller.forward();
@@ -117,16 +132,15 @@ class AnimatedCard extends StatelessWidget {
   final double height;
   final double width;
 
-  AnimatedCard({
-    @required this.child,
-    @required this.animation,
-    @required this.height,
-    @required this.width
-  })
+  AnimatedCard(
+      {@required this.child,
+      @required this.animation,
+      @required this.height,
+      @required this.width})
       : assert(child != null),
         assert(animation != null),
-        assert(height!=null && height >10),
-        assert(width!=null && width >10);
+        assert(height != null && height > 10),
+        assert(width != null && width > 10);
 
   @override
   Widget build(BuildContext context) {
@@ -147,17 +161,14 @@ class AnimatedCard extends StatelessWidget {
         width: width,
         child: Card(
             elevation: 4,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20)
-            ),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             borderOnForeground: false,
             child: Padding(
               padding: const EdgeInsets.all(10),
               child: child,
-            )
-        ),
+            )),
       ),
     );
   }
 }
-
