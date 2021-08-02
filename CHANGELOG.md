@@ -2,10 +2,16 @@
 
 * TODO: Describe: Create package
 
-## [2.1.2]
+## [0.0.2]
 * Create Document
 * Create Example
 * Comment dart doc
+
+## [0.0.3]
+* fix some bug
+
+## [0.0.4]
+* built-in tinder effect
 
 
 

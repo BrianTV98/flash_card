@@ -1,6 +1,6 @@
 name: flash_card
-description: A new Flutter package.
-version: 0.0.2
+description: Support for creating Flash Cards - a learning method that makes it easier for users to remember information.
+version: 0.0.3
 author: ganui
 homepage: https://github.com/GaNuiGLPK/flash_card
 
@@ -9,6 +9,7 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+#  flutter_tindercard: ^0.2.0
   flutter:
     sdk: flutter
 
