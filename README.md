@@ -12,7 +12,7 @@ In your `pubspec.yaml` root add:
 dependencies:
   flash_card: ^0.0.5
 ```
-## Examle
+## Example
 ![Showscase gif](https://github.com/BrianTV98/flash_card/blob/main/assets/flash_card_demo.gif)
 
 ## Code Example
