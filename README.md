@@ -1,4 +1,4 @@
-## flash_card
+## FLASH CARD
 
 
 ## Include to your project
