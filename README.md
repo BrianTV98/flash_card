@@ -1,6 +1,4 @@
-
 # flash_card
-
 ```
    FlashCard(
        frontWidget: Container(
