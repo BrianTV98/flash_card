@@ -1,8 +1,10 @@
 ## FLASH CARD
 
+Support for creating Flash Cards - a learning method that makes it easier for users to remember information.
+Dependencies:
+  flutter_tindercard: ^0.2.0
 
-## Include to your project
-
+## Install 
 In your `pubspec.yaml` root add:
 
 ```yaml
