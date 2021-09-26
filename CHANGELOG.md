@@ -13,6 +13,9 @@
 ## [0.0.4]
 * built-in tinder effect
 
+## [0.0.5]
+* update documment
+
 
 
 
