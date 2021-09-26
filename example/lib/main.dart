@@ -45,7 +45,7 @@ class MyHomePage extends StatelessWidget {
           Expanded(child: FlashCardListItem(flashcards: flashCard)),
           Container(
             height: 100,
-            color: Colors.red,
+            color: Colors.transparent,
           )
         ],
       ),
