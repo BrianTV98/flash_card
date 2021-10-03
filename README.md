@@ -6,7 +6,7 @@ Dependencies:
   flutter_tindercard: ^0.2.0
 
 ## Install 
-In your `pubspec.yaml` root add:
+* In your `pubspec.yaml` root add:
 
 ```yaml
 dependencies:
