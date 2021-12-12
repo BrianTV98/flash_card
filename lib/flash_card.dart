@@ -6,6 +6,16 @@ import 'package:flutter/material.dart';
 
 /// UI flash card, commonly found in language teaching to children
 class FlashCard extends StatefulWidget {
+  /// constructor: Default height 200dp, width 200dp, duration  500 milliseconds
+  const FlashCard({
+    @required this.frontWidget,
+    @required this.backWidget,
+    this.duration = const Duration(milliseconds: 500),
+    this.height = 200,
+    this.width = 200,
+    Key key,
+  }) : super(key: key);
+
   /// this is the front of the card
   final Widget frontWidget;
 
@@ -20,16 +30,6 @@ class FlashCard extends StatefulWidget {
 
   /// width of card
   final double width;
-
-  /// constructor: Default height 200dp, width 200dp, duration  500 milliseconds
-  const FlashCard(
-      {Key key,
-      @required this.frontWidget,
-      @required this.backWidget,
-      this.duration = const Duration(milliseconds: 500),
-      this.height = 200,
-      this.width = 200})
-      : super(key: key);
 
   @override
   _FlashCardState createState() => _FlashCardState();
@@ -127,11 +127,6 @@ class _FlashCardState extends State<FlashCard>
 }
 
 class AnimatedCard extends StatelessWidget {
-  final Widget child;
-  final Animation<double> animation;
-  final double height;
-  final double width;
-
   AnimatedCard(
       {@required this.child,
       @required this.animation,
@@ -141,6 +136,17 @@ class AnimatedCard extends StatelessWidget {
         assert(animation != null),
         assert(height != null && height > 10),
         assert(width != null && width > 10);
+
+  final Widget child;
+
+  ///  animation of card view
+  final Animation<double> animation;
+
+  ///height of card view
+  final double height;
+
+  /// width of card view
+  final double width;
 
   @override
   Widget build(BuildContext context) {
