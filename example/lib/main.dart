@@ -1,5 +1,4 @@
 import 'package:flash_card/flash_card.dart';
-import 'package:flash_card/list_card.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -37,19 +36,14 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: Column(
-        children: [
-          Expanded(child: FlashCardListItem(flashcards: flashCard)),
-          Container(
-            height: 100,
-            color: Colors.transparent,
-          )
-        ],
-      ),
-    );
+        appBar: AppBar(
+          title: Text(title),
+        ),
+        body: ListView.builder(
+            itemCount: flashCard.length,
+            itemBuilder: (context, index) {
+              return flashCard[index];
+            }));
   }
 
   final List<FlashCard> flashCard = List.generate(

@@ -5,11 +5,10 @@ author: tranhieu
 homepage: https://github.com/GaNuiGLPK/flash_card
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
-  flutter_tindercard: ^0.2.0
   lint: ^1.5.3
   flutter:
     sdk: flutter
